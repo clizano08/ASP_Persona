@@ -1,0 +1,62 @@
+﻿@model Persona_EL.Persona
+
+@{
+    ViewBag.Title = "DeletePersona";
+}
+
+<h2>Eliminar Persona</h2>
+
+<h3>Seguro que desea eliminarla?</h3>
+<div>
+    <h4>Persona</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nacimiento)
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm("ConfirmDeletePersona", "Persona", new { @pid = Model.Id }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "ListPersona")
+        </div>
+    }
+</div>

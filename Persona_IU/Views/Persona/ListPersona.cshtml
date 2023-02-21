@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Persona_EL.Persona>
+
+@{
+    ViewBag.Title = "ListPersona";
+}
+
+<h2>Personas Registradas</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "CreatePersona",null, new { @class = "btn  btn-success btn-md" }) |
+
+    <a class="btn btn-primary btn-md" href="@Url.Action("ReportPersona")">Reporte</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nacimiento)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Correo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Telefono)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nacimiento)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "UpdatePersona", new { pid = item.Id }, new { @class = "btn  btn-primary btn-md " }) |
+        @Html.ActionLink("Detalle", "DetailPersona", new { pid = item.Id }, new { @class = "btn  btn-warning btn-md " }) |
+        @Html.ActionLink("Eliminar", "DeletePersona", new { pid = item.Id }, new { @class = "btn  btn-danger btn-md " })
+    </td>
+</tr>
+}
+
+</table>
